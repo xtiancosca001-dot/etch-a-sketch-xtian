@@ -1,5 +1,6 @@
 const gridContainer = document.querySelector('.grid-container');
 const newGridBtn = document.querySelector('.new-grid-btn');
+const randomCanvasBtn = document.querySelector('.random-canvas');
 const MIN_GRID_SIZE = 16;
 const MAX_GRID_SIZE = 100;
 
@@ -75,6 +76,15 @@ function clear(grid) {
     }
 }
 
+function randomCanvas(grid) {
+    if(grid.children) {
+        const rows = Array.from(grid.children);
+        rows.forEach(row => {
+            [...row.children].forEach(child=>{child.style.backgroundColor=`rgb(${randomBgColor()})`;});
+        });
+    }
+}
+
 let userGridSize;
 const clearBtn = document.querySelector('.clear-btn');
 newGridBtn.addEventListener('click', () => {
@@ -89,7 +99,12 @@ newGridBtn.addEventListener('click', () => {
     clearBtn.addEventListener('click', (e) => {
         clear(gridContainer);
     })
+    randomCanvasBtn.addEventListener('click', () => {
+        randomCanvas(gridContainer);
+    })
 });
+
+
 
 
 
