@@ -97,13 +97,17 @@ function randomCanvas(grid) {
     }
 }
 
-newGridBtn.addEventListener('click', () => {
+function enableButtons() {
     randomCanvasBtn.removeAttribute('disabled');
     clearBtn.removeAttribute('disabled');
     opacityCheckBox.removeAttribute('disabled');
     randomColorCheckBox.removeAttribute('disabled');
     colorInput.removeAttribute('disabled');
+}
+
+newGridBtn.addEventListener('click', () => {
     gridContainer.textContent = '';
+    enableButtons();
     do {
         userGridSize = prompt(`Please enter a grid size (from ${MIN_GRID_SIZE} to ${MAX_GRID_SIZE})`);
         if(userGridSize === null) return;
