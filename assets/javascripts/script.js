@@ -1,5 +1,5 @@
 const gridContainer = document.querySelector('.grid-container');
-const sizeButton = document.querySelector('.grid-size-btn');
+const newGridBtn = document.querySelector('.new-grid-btn');
 const GRID_SIZE = 16;
 
 function createRow(size) {
@@ -7,7 +7,7 @@ function createRow(size) {
     gridRow.classList.add('row');
     for(let cols = 0; cols < size; cols++) {
         const gridColumn = document.createElement('div');
-        gridColumn.classList.add('column');
+        gridColumn.classList.add('cell');
         gridRow.appendChild(gridColumn);
     }
     return gridRow;
