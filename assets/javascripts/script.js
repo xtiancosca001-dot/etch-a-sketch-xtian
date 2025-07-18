@@ -20,6 +20,19 @@ function createGrid(grid, gridSize) {
     }
 }
 
+function draw(grid) {
+    if(grid.children) {
+        console.log(`Grid has cells inside`);
+        const rows = Array.from(grid.children);
+        console.log(rows)
+        rows.forEach(row => {
+            row.addEventListener('mouseover', e => {
+                e.target.style.backgroundColor = 'red';
+            });
+        });
+    }
+}
+
 let userGridSize;
 newGridBtn.addEventListener('click', () => {
     gridContainer.textContent = '';
@@ -29,6 +42,7 @@ newGridBtn.addEventListener('click', () => {
         userGridSize = Number(userGridSize);
     } while(userGridSize < MIN_GRID_SIZE || userGridSize > MAX_GRID_SIZE);
     createGrid(gridContainer, userGridSize);
+    draw(gridContainer); 
 });
 
 
