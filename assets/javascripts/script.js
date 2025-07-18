@@ -1,8 +1,25 @@
-const gridContainer = document.querySelector('.grid-container');
-const newGridBtn = document.querySelector('.new-grid-btn');
-const randomCanvasBtn = document.querySelector('.random-canvas');
+// Constants
 const MIN_GRID_SIZE = 16;
 const MAX_GRID_SIZE = 100;
+
+// Global Variables
+let userGridSize, colorMethod, alpha, color='0,0,0';
+
+// Containers
+const gridContainer = document.querySelector('.grid-container');
+
+// Buttons and Inputs
+const newGridBtn = document.querySelector('.new-grid-btn');
+const clearBtn = document.querySelector('.clear-btn');
+clearBtn.setAttribute('disabled','');
+const randomCanvasBtn = document.querySelector('.random-canvas');
+randomCanvasBtn.setAttribute('disabled', '');
+const randomColorCheckBox = document.querySelector('#random-color');
+randomColorCheckBox.setAttribute('disabled','');
+const opacityCheckBox = document.querySelector('#opacity');
+opacityCheckBox.setAttribute('disabled','');
+const colorInput = document.querySelector('#color');
+colorInput.setAttribute('disabled','');
 
 function createRow(gridSize) {
     const gridRow = document.createElement('div');
@@ -38,11 +55,6 @@ function randomBgColor() {
     ];
     return [v1,v2,v3].join(',');
 }
-
-let colorMethod, alpha, color='0,0,0';
-const randomColorCheckBox = document.querySelector('#random-color');
-const opacityCheckBox = document.querySelector('#opacity');
-const colorInput = document.querySelector('#color');
 
 colorInput.addEventListener('change', e => {
     color = hexToRgb(e.target.value);
@@ -85,9 +97,12 @@ function randomCanvas(grid) {
     }
 }
 
-let userGridSize;
-const clearBtn = document.querySelector('.clear-btn');
 newGridBtn.addEventListener('click', () => {
+    randomCanvasBtn.removeAttribute('disabled');
+    clearBtn.removeAttribute('disabled');
+    opacityCheckBox.removeAttribute('disabled');
+    randomColorCheckBox.removeAttribute('disabled');
+    colorInput.removeAttribute('disabled');
     gridContainer.textContent = '';
     do {
         userGridSize = prompt(`Please enter a grid size (from ${MIN_GRID_SIZE} to ${MAX_GRID_SIZE})`);
@@ -96,7 +111,7 @@ newGridBtn.addEventListener('click', () => {
     } while(userGridSize < MIN_GRID_SIZE || userGridSize > MAX_GRID_SIZE);
     createGrid(gridContainer, userGridSize);
     draw(gridContainer);
-    clearBtn.addEventListener('click', (e) => {
+    clearBtn.addEventListener('click', () => {
         clear(gridContainer);
     })
     randomCanvasBtn.addEventListener('click', () => {
