@@ -19,5 +19,15 @@ function createGrid(grid, size) {
     }
 }
 
+let userSize;
+sizeButton.addEventListener('click', () => {
+    do {
+        userSize = prompt('Please enter a grid size (from 16 to 100)');
+        if(userSize === null) return;
+        userSize = Number(userSize);
+    } while(userSize < 16 || userSize > 100);
+    createGrid(gridContainer, userSize);
+});
+
 
 
