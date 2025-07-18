@@ -20,14 +20,26 @@ function createGrid(grid, gridSize) {
     }
 }
 
+function randomBgColor() {
+    const [v1,v2,v3] = [
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256),
+        Math.floor(Math.random()*256)
+    ];
+    return [v1,v2,v3].join(',');
+}
+
+let colorMethod;
+const DEFAULT_COLOR = '255,0,0';
+const randomColorCheckBox = document.querySelector('#random-color');
+
 function draw(grid) {
     if(grid.children) {
-        console.log(`Grid has cells inside`);
         const rows = Array.from(grid.children);
-        console.log(rows)
         rows.forEach(row => {
             row.addEventListener('mouseover', e => {
-                e.target.style.backgroundColor = 'red';
+                colorMethod = randomColorCheckBox.checked ? randomBgColor() : DEFAULT_COLOR;
+                e.target.style.backgroundColor = `rgb(${colorMethod})`;
             });
         });
     }
