@@ -20,6 +20,15 @@ function createGrid(grid, gridSize) {
     }
 }
 
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16),
+    parseInt(result[2], 16),
+    parseInt(result[3], 16)
+   ].join(',') : null;
+}
+
 function randomBgColor() {
     const [v1,v2,v3] = [
         Math.floor(Math.random()*256),
@@ -29,10 +38,14 @@ function randomBgColor() {
     return [v1,v2,v3].join(',');
 }
 
-let colorMethod, alpha;
-const DEFAULT_COLOR = '255,0,0';
+let colorMethod, alpha, color='0,0,0';
 const randomColorCheckBox = document.querySelector('#random-color');
 const opacityCheckBox = document.querySelector('#opacity');
+const colorInput = document.querySelector('#color');
+
+colorInput.addEventListener('change', e => {
+    color = hexToRgb(e.target.value);
+});
 
 function draw(grid) {
     if(grid.children) {
@@ -40,7 +53,7 @@ function draw(grid) {
         gridContainer.addEventListener('mouseenter', () => { alpha = 0.1; });
         rows.forEach(row => {
             row.addEventListener('mouseover', e => {
-                colorMethod = randomColorCheckBox.checked ? randomBgColor() : DEFAULT_COLOR;
+                colorMethod = randomColorCheckBox.checked ? randomBgColor() : color;
                 if(opacityCheckBox.checked) {
                     e.target.style.backgroundColor = `rgba(${colorMethod},${Number(alpha.toFixed(2))})`;
                     if(Number(alpha.toFixed(2)) < 1.0) alpha += 0.1;
