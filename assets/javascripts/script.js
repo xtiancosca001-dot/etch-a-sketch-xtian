@@ -29,17 +29,25 @@ function randomBgColor() {
     return [v1,v2,v3].join(',');
 }
 
-let colorMethod;
+let colorMethod, alpha;
 const DEFAULT_COLOR = '255,0,0';
 const randomColorCheckBox = document.querySelector('#random-color');
+const opacityCheckBox = document.querySelector('#opacity');
 
 function draw(grid) {
     if(grid.children) {
         const rows = Array.from(grid.children);
+        gridContainer.addEventListener('mouseenter', () => { alpha = 0.1; });
         rows.forEach(row => {
             row.addEventListener('mouseover', e => {
                 colorMethod = randomColorCheckBox.checked ? randomBgColor() : DEFAULT_COLOR;
-                e.target.style.backgroundColor = `rgb(${colorMethod})`;
+                if(opacityCheckBox.checked) {
+                    e.target.style.backgroundColor = `rgba(${colorMethod},${Number(alpha.toFixed(2))})`;
+                    if(Number(alpha.toFixed(2)) < 1.0) alpha += 0.1;
+                }
+                else {
+                    e.target.style.backgroundColor = `rgb(${colorMethod})`;
+                }
             });
         });
     }
