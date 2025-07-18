@@ -1,11 +1,12 @@
 const gridContainer = document.querySelector('.grid-container');
 const newGridBtn = document.querySelector('.new-grid-btn');
-const GRID_SIZE = 16;
+const MIN_GRID_SIZE = 16;
+const MAX_GRID_SIZE = 100;
 
-function createRow(size) {
+function createRow(gridSize) {
     const gridRow = document.createElement('div');
     gridRow.classList.add('row');
-    for(let cols = 0; cols < size; cols++) {
+    for(let cols = 0; cols < gridSize; cols++) {
         const gridColumn = document.createElement('div');
         gridColumn.classList.add('cell');
         gridRow.appendChild(gridColumn);
@@ -13,21 +14,21 @@ function createRow(size) {
     return gridRow;
 }
 
-function createGrid(grid, size) {
-    for(let row = 0; row < size; row++) {
-        grid.appendChild(createRow(size));
+function createGrid(grid, gridSize) {
+    for(let row = 0; row < gridSize; row++) {
+        grid.appendChild(createRow(gridSize));
     }
 }
 
-let userSize;
+let userGridSize;
 newGridBtn.addEventListener('click', () => {
     gridContainer.textContent = '';
     do {
-        userSize = prompt('Please enter a grid size (from 16 to 100)');
-        if(userSize === null) return;
-        userSize = Number(userSize);
-    } while(userSize < 16 || userSize > 100);
-    createGrid(gridContainer, userSize);
+        userGridSize = prompt(`Please enter a grid size (from ${MIN_GRID_SIZE} to ${MAX_GRID_SIZE})`);
+        if(userGridSize === null) return;
+        userGridSize = Number(userGridSize);
+    } while(userGridSize < MIN_GRID_SIZE || userGridSize > MAX_GRID_SIZE);
+    createGrid(gridContainer, userGridSize);
 });
 
 
