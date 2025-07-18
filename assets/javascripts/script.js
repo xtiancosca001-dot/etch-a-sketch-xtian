@@ -33,7 +33,17 @@ function draw(grid) {
     }
 }
 
+function clear(grid) {
+    if(grid.children) {
+        const rows = Array.from(grid.children);
+        rows.forEach(row => {
+            [...row.children].forEach(child=>{child.style.backgroundColor='';});
+        });
+    }
+}
+
 let userGridSize;
+const clearBtn = document.querySelector('.clear-btn');
 newGridBtn.addEventListener('click', () => {
     gridContainer.textContent = '';
     do {
@@ -42,7 +52,10 @@ newGridBtn.addEventListener('click', () => {
         userGridSize = Number(userGridSize);
     } while(userGridSize < MIN_GRID_SIZE || userGridSize > MAX_GRID_SIZE);
     createGrid(gridContainer, userGridSize);
-    draw(gridContainer); 
+    draw(gridContainer);
+    clearBtn.addEventListener('click', (e) => {
+        clear(gridContainer);
+    })
 });
 
 
