@@ -20,7 +20,8 @@ function createGrid(grid, size) {
 }
 
 let userSize;
-sizeButton.addEventListener('click', () => {
+newGridBtn.addEventListener('click', () => {
+    gridContainer.textContent = '';
     do {
         userSize = prompt('Please enter a grid size (from 16 to 100)');
         if(userSize === null) return;
