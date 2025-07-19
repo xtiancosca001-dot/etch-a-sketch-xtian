@@ -3,7 +3,7 @@ const MIN_GRID_SIZE = 16;
 const MAX_GRID_SIZE = 100;
 
 // Global Variables
-let userGridSize, colorMethod, alpha, color = '0,0,0';
+let userGridSize, colorMethod, alpha, color = '255,255,255';
 
 // Containers
 const gridContainer = document.querySelector('.grid-container');
@@ -136,7 +136,7 @@ newGridBtn.addEventListener('click', () => {
 
 randomColorCheckBox.addEventListener('change', (e) => {
     if(e.target.checked) {
-        randomColorLabel.style.color = 'black';
+        randomColorLabel.style.color = 'white';
         randomColorLabel.style.fontWeight = '600';
     } else {
         randomColorLabel.style.color = 'gray';
@@ -146,7 +146,7 @@ randomColorCheckBox.addEventListener('change', (e) => {
 
 opacityCheckBox.addEventListener('change', (e) => {
     if(e.target.checked) {
-        opacityLabel.style.color = 'black';
+        opacityLabel.style.color = 'white';
         opacityLabel.style.fontWeight = '600';
     } else {
         opacityLabel.style.color = 'gray';
