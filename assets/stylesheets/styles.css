@@ -1,13 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    font-family: Montserrat, sans-serif;
+    color: white;
+}
+
+body {
+    background: url('../images/wallpaperflare.com_wallpaper.jpg');
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25em;
+    height: 100vh;
+}
+
+.header {
+    text-align: center;
+}
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    width: 1200px;
+    height: 700px;
+    gap: 2.5em;
+}
+
 .grid-container {
     width: 550px;
     height: 550px;
-    border: 5px solid black;
+    border: 5px solid rgba(255, 255, 255, 0.484);
     aspect-ratio: 1 / 1;
     display: flex;
     flex-direction: column;
@@ -19,6 +55,85 @@
 
 .cell {
     width: 100%;
-    border: 1px solid black;
+    border: 0.5px solid rgba(255, 255, 255, 0.497);
     aspect-ratio: 1 / 1;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid white;
+    padding: 1.2em;
+}
+
+.main-options {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    width: 100%;
+}
+
+.main-options button {
+    font-family: Montserrat, sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 12px;
+}
+
+.main-options button:hover {
+    color: red;
+}
+
+.main-options button:disabled {
+    color: gray;
+    cursor: unset;
+}
+
+.misc-options {
+    display: flex;
+}
+
+.color-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    padding: 1em;
+}
+
+.color-container input {
+    background: none;
+    border: none;
+    width: 100%;
+    flex: 1;
+}
+
+.color-container input:disabled {
+    display: none;
+}
+
+.additional {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+
+.additional label {
+    user-select: none;
+    color: gray;
+    padding: 12px;
+}
+
+.additional label.disabled {
+    cursor: unset;
+    color: gray;
+}
+
+.additional input {
+    display: none;
 }

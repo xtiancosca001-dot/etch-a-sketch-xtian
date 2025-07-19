@@ -7,14 +7,34 @@
         <title>Etch-A-Sketch</title>
     </head>
     <body>
-        <h1>Etch-A-Sketch</h1>
-        <div class="grid-container"></div>
-        <button class="new-grid-btn">New Grid</button>
-        <button class="clear-btn">Clear</button>
-        <button class="random-canvas">Random Canvas</button>
-        <input type="checkbox" name="is-random-color" id="random-color" /><label for="random-color"> Use Random Color</label>
-        <input type="checkbox" name="is-opaque" id="opacity" /><label for="opacity"> Use Opacity</label>
-        <input type="color" name="grid-color" id="color" /><label for="color"> Color</label>
+        <div class="header">
+            <h1>Etch-A-Sketch</h1>
+        </div>
+        <div class="app-container">
+            <div class="grid-container"></div>
+            <div class="controls">
+                <div class="main-options">
+                    <h2>Options</h2>
+                    <button class="new-grid-btn">New Grid</button>
+                    <button class="clear-btn">Clear</button>
+                    <button class="random-canvas">Random Canvas</button>
+                </div>
+                <div class="misc-options">
+                    <div class="color-container">
+                        <h2>Color</h2>
+                        <input type="color" name="grid-color" id="color" />
+                    </div>
+                    <div class="additional">
+                        <h2>Additional Features</h2>
+                        <input type="checkbox" name="is-random-color" id="random-color" /><label for="random-color" class="disabled"> Use Random Color</label>
+                        <input type="checkbox" name="is-opaque" id="opacity" /><label for="opacity" class="disabled"> Use Opacity</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Copyright 2025 - Christian Eric Cosca</p>
+        </div>
         <script src="./assets/javascripts/script.js"></script>
     </body>
 </html>

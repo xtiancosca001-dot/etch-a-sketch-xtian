@@ -20,7 +20,8 @@ const opacityCheckBox = document.querySelector('#opacity');
 opacityCheckBox.setAttribute('disabled', '');
 const colorInput = document.querySelector('#color');
 colorInput.setAttribute('disabled', '');
-
+const randomColorLabel = document.querySelector('label[for="random-color"]')
+const opacityLabel = document.querySelector('label[for="opacity"]');
 // Methods and Event Listeners
 function createRow(gridSize) {
     const gridRow = document.createElement('div');
@@ -107,6 +108,8 @@ function randomCanvas(grid) {
 
 function enableButtons() {
     randomCanvasBtn.removeAttribute('disabled');
+    randomColorLabel.classList.toggle('disabled');
+    opacityLabel.classList.toggle('disabled');
     clearBtn.removeAttribute('disabled');
     opacityCheckBox.removeAttribute('disabled');
     randomColorCheckBox.removeAttribute('disabled');
@@ -131,6 +134,25 @@ newGridBtn.addEventListener('click', () => {
     })
 });
 
+randomColorCheckBox.addEventListener('change', (e) => {
+    if(e.target.checked) {
+        randomColorLabel.style.color = 'black';
+        randomColorLabel.style.fontWeight = '600';
+    } else {
+        randomColorLabel.style.color = 'gray';
+        randomColorLabel.style.fontWeight = 'unset';
+    }
+});
+
+opacityCheckBox.addEventListener('change', (e) => {
+    if(e.target.checked) {
+        opacityLabel.style.color = 'black';
+        opacityLabel.style.fontWeight = '600';
+    } else {
+        opacityLabel.style.color = 'gray';
+        opacityLabel.style.fontWeight = 'unset';
+    }
+});
 
 
 
