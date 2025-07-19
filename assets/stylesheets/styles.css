@@ -17,12 +17,15 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    display:flex;
+    flex-direction: column;
     height: 100vh;
 }
 
 .header {
     text-align: center;
-    margin-top: 72px;
+    margin-top: 48px;
+    font-size: 2em;
 }
 
 h2 {
@@ -36,16 +39,17 @@ h2 {
     align-items: center;
     background-color: rgba(255,255,255,0.1);
     backdrop-filter: blur(12px);
-    width: 1500px;
     gap: 2.5em;
+    min-width: 1000px;
+    width: 1200px;
+    max-width: 2000px;
     padding: 50px;
+    flex: 1;
 }
 
 .grid-container {
-    min-height: 700px;
-    min-width: 700px;
-    max-width: 1500px;
-    max-height: 1500px;
+    width: 500px;
+    max-width: 700px;
     border: 5px solid rgba(255, 255, 255, 0.484);
     aspect-ratio: 1 / 1;
     display: flex;
@@ -70,6 +74,9 @@ h2 {
     text-align: center;
     border: 5px solid rgba(255, 255, 255, 0.484);
     padding: 1.2em;
+    width: 500px;
+    max-width: 700px;
+    aspect-ratio: 1 / 1;
 }
 
 .main-options {
