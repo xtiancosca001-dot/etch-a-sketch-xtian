@@ -62,11 +62,8 @@ colorInput.addEventListener('change', e => {
     color = hexToRgb(e.target.value);
 });
 
-gridContainer.addEventListener('mouseenter', () => { 
-    alpha = 0.1;
-});
 
-function sketch(row) {
+function sketch(row,alpha) {
     row.addEventListener('mouseover', e => {
         colorMethod = randomColorCheckBox.checked ? randomBgColor() : color;
         if (opacityCheckBox.checked) {
@@ -83,7 +80,9 @@ function draw(grid) {
     if (grid.children) {
         const rows = Array.from(grid.children);
         rows.forEach(row => {
-            sketch(row);
+            [...row.children].forEach(cell => {
+                sketch(cell, alpha=0.1);
+            });
         });
     }
 }
